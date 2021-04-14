@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="employee.css">
+    <link rel="stylesheet" href="../scroll.css">
+
+    <script src="data.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-md-4 col-lg-3 col-12 navigation-pane overflow-hidden">
+                <div class="title-heading">&nbsp;PAYROLL &nbsp;</div>
+                <div class="nav-menu" style="margin-top: 20px;">
+                    <div class="nav-item">
+                        <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#6461ce" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">home</span>
+                        </span>
+                        <span class="nav-text"></span> Home</span>
+                    </div>
+                    <a href="../hr/home.html">
+                        <div class="nav-item">
+                            <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#33a7e3" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">business</span>
+                            </span>
+                            <span class="nav-text"></span> Department</span>
+                        </div>
+                    </a>
+                    <a href="../employees/employee.html">
+                        <div class="nav-item active">
+                            <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#b649c7" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">person</span>
+                            </span>
+                            <span class="nav-text"></span> Employess</span>
+                        </div>
+                    </a>
+
+                    <div class="nav-item">
+                        <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#23b07c" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">bar_chart</span>
+                        </span>
+                        <span class="nav-text"></span> Report</span>
+                    </div>
+                    <a href="../index.html">
+                        <div class="nav-item">
+                            <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#ff8600" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">logout</span>
+                            </span>
+                            <span class="nav-text"></span> Logout</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-9 col-12 body-pane overflow-hidden">
+                <div class="header">
+                    <span class="nav-icon">
+                        <svg width=40 height=40 viewBox="0 0 40 40">
+                            <path fill="#b649c7" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                        </svg>
+                        <span class="material-icons">person</span>
+                    </span>
+                    <span class="header-text">Employees</span>
+                </div>
+                <div class="container-fluid" style="overflow-y: auto; height: 85vh;">
+
+                    <div class="row d-inline-flex" style="width: 100%; margin-top: 30px; margin-left: 5px;">
+                        <input class="form-control bg-dark text-white" id="searchEmpInput" type="text" placeholder="Search..">
+                        <br/><br/><br>
+                        <div class="table-responsive">
+                            <table id="empTable" class="table table-dark table-hover table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th onclick="sortTable(0)">#</th>
+                                        <th onclick="sortTable(1)">Name</th>
+                                        <th onclick="sortTable(2)">Department</th>
+                                        <th>Mobile</th>
+                                        <th>Email</th>
+                                        <th onclick="sortTable(5)">Gender</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="empTableContent">
+                                    <tr id="addEmpTr" class="collapse">
+                                        <td><input class="table-input" id="empIdInput" type="text" placeholder="Id" /></td>
+                                        <td><input class="table-input" id="empNameInput" type="text" placeholder="Name" /></td>
+                                        <td>
+                                            <select class="table-input" id="empDeptInput" required>
+                                                <option value="1">MCA</option>
+                                                <option value="2">MCA 2</option>
+                                                <option value="3">MCA 3</option>
+                                                <option value="4">MCA 4</option>
+                                            </select>
+                                        </td>
+                                        <td><input class="table-input" id="empMobileInput" type="text" placeholder="Mobile" /></td>
+                                        <td><input class="table-input" id="empEmailInput" type="text" placeholder="Email" /></td>
+                                        <td>
+                                            <select class="table-input" id="empGenderInput" required>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <button id="addEmpBtn" data-toggle="collapse" data-target="#addEmpTr" type="button" style="background-color: #b649c7; color: white;" class="btn">Add Employee</button>
+                        <button id="cancelAddEmp" data-toggle="collapse" data-target="#addEmpTr" type="button" class="btn btn-danger">Cancel</button>
+                        <button id="saveAddEmp" style="margin-left: 30px;" type="button" class="btn btn-success">Save</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Dept Modal -->
+    <div class="modal fade" id="generatePayrollModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" id="empNameModal">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table-borderless">
+                        <tbody>
+                            <tr>
+                                <td>Basic</td>
+                                <td class="pl-5"><input id="basicPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>HRA</td>
+                                <td class="pl-5"><input id="hraPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>Transport Allowance</td>
+                                <td class="pl-5"><input id="taPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>FBP Allowance</td>
+                                <td class="pl-5"><input id="fbpPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>Bonus</td>
+                                <td class="pl-5"><input id="bonusPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>Provident Fund</td>
+                                <td class="pl-5"><input id="pfPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>Income Tax</td>
+                                <td class="pl-5"><input id="itPay" type="text" class="input-field" required></td>
+                            </tr>
+                            <tr>
+                                <td>Insurance</td>
+                                <td class="pl-5"><input id="insurancePay" type="text" class="input-field" required></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="addDeptBtn" onclick="calculatePayment();">Calculate</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

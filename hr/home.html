@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="../scroll.css">
+
+    <script src="data.js"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-md-4 col-lg-3 col-12 navigation-pane overflow-hidden">
+                <div class="title-heading">&nbsp;PAYROLL &nbsp;</div>
+                <div class="nav-menu" style="margin-top: 20px;">
+                    <div class="nav-item">
+                        <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#6461ce" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">home</span>
+                        </span>
+                        <span class="nav-text"></span> Home</span>
+                    </div>
+                    <a href="../hr/home.html">
+                        <div class="nav-item active">
+                            <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#33a7e3" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">business</span>
+                            </span>
+                            <span class="nav-text"></span> Department</span>
+                        </div>
+                    </a>
+                    <a href="../employees/employee.html">
+                        <div class="nav-item">
+                            <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#b649c7" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">person</span>
+                            </span>
+                            <span class="nav-text"></span> Employess</span>
+                        </div>
+                    </a>
+                    <div class="nav-item">
+                        <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#23b07c" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">bar_chart</span>
+                        </span>
+                        <span class="nav-text"></span> Report</span>
+                    </div>
+                    <a href="../index.html">
+                        <div class="nav-item">
+                            <span class="nav-icon">
+                            <svg width=40 height=40 viewBox="0 0 40 40">
+                                <path fill="#ff8600" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                            </svg>
+                            <span class="material-icons">logout</span>
+                            </span>
+                            <span class="nav-text"></span> Logout</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-8 col-lg-9 col-12 body-pane overflow-hidden">
+                <div class="header">
+                    <span class="nav-icon">
+                        <svg width=40 height=40 viewBox="0 0 40 40">
+                            <path fill="#33a7e3" stroke="none" d="M 0,20 C 0,0 0,0 20,0 S 40,0 40,20 40,40 20,40 0,40 0,20"></path>
+                        </svg>
+                        <span class="material-icons">business</span>
+                    </span>
+                    <span class="header-text">Department</span>
+                </div>
+                <div class="container-fluid" style="overflow-y: auto; height: 85vh;">
+
+                    <div id="dept-card-container" class="row d-inline-flex" style="width: 100%; margin-top: 30px;">
+
+                        <div class="col-md-4 col-sm-6">
+                            <div class="department-card" id="add_dept" data-toggle="modal" data-target="#addDeptModal" style="background-color: #33a8e3cb;">
+                                <span class="dept-add material-icons">add</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <div class="department-card ">
+                                <span class="dept-name">Human Resources</span>
+                                <span class="dept-head">Dr. Anala Pandit</span>
+                                <span class="dept-emp-count">32 Employees</span>
+                                <div class="dept-options">
+                                    <span class="material-icons">edit</span>
+                                    <span class="material-icons">delete</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Dept Modal -->
+    <div class="modal fade" id="addDeptModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <input type="text" class="input-field" required id="deptNameField" placeholder="Department Name">
+                    <select class="select-field" id="deptHeadField" required>
+                        <option value="0">Employee Head</option>
+                        <option value="Mr. X">Mr X</option>
+                        <option value="Dr. Ambedkar">Dr. Ambedkar</option>
+                        <option value="Mrs. Shanti">Mrs. Shanti</option>
+                        <option value="Prof. Pooja">Prof. Pooja</option>
+                    </select>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="addDeptBtn">Add</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
